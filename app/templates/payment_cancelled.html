@@ -1,0 +1,486 @@
+
+
+{% load static %}
+
+<html dir="" style="          font-family: 'Tajawal', sans-serif;
+" class="">
+<head>
+
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <meta name="description" content="  مهاد ينبع">
+
+        <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Google Fonts -->
+
+
+        <link rel="stylesheet" href="{% static 'css/plugins.min.css' %}">
+            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="https://scontent-hbe1-1.xx.fbcdn.net/v/t1.15752-0/s206x206/131631201_220950422773637_8461819617291712960_n.png?_nc_cat=103&amp;ccb=2&amp;_nc_sid=58c789&amp;_nc_ohc=Fh_5mHsK2W8AX-1KJ1a&amp;_nc_ht=scontent-hbe1-1.xx&amp;_nc_tp=30&amp;oh=d0dc50ba7ad14098f7c5423e7168ce41&amp;oe=5FFD9C71">
+
+        <!-- Modernizr -->
+        <script src="{% static 'modernizr.js' %}"></script>
+    <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+    <body  data-new-gr-c-s-check-loaded="14.988.0" data-gr-ext-installed="">
+        <div id="wrapper">
+            <div class="sticky-wrapper" style=""><div class="sticky-wrapper" style="height: 114px;"><div class="sticky-wrapper" style=""><div class="sticky-wrapper" style=""><div class="sticky-wrapper" style="height: 114px;">
+                <header class="header sticy-header">
+                <div class="container">
+                    <a href="/" class="site-logo" title="Shopo - eCommerce Template">
+<img src="https://i.suar.me/BZpeN/l" alt="Logo" style="
+    width: 100px;
+    height: 90px;
+    margin-top: 10px;
+">                    </a>
+
+                    <div class="header-dropdowns">
+                        <div class="dropdown header-dropdown">
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#" title="Euro">EUR</a></li>
+                                <li><a href="#" title="Pound">PND</a></li>
+                                <li><a href="#" title="Yen">YEN</a></li>
+                            </ul>
+                        </div><!-- End .dropddown -->
+
+                        <div class="dropdown header-dropdown">
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#" title="Spanish">SPA</a></li>
+                                <li><a href="#" title="Turkish">TUR</a></li>
+                                <li><a href="#" title="German">GER</a></li>
+                            </ul>
+                        </div><!-- End .dropddown -->
+                    </div><!-- End .header-dropdowns -->
+
+                    <div class="search-form-container">
+                        <a href="#" class="search-form-toggle" title="Toggle Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+<form action="{% url 'searchposts' %}" method="GET" value="{{request.GET.q}}">
+
+                            <input  class="form-control" name="q" value="{{request.GET.q}}"  type="search" placeholder="" aria-label="Search" >
+                            <button type="submit" name="submit" value="Search" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>                    </div><!-- End .search-form-container -->
+
+                    <ul class="top-links">
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                    <div class="dropdown cart-dropdown">
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <p class="dropdown-cart-info">You have 2 products in your cart.</p>
+                            <div class="dropdown-menu-wrapper">
+                                <div class="product">
+                                    <figure class="product-image-container">
+                                        <a href="product.html" title="Product Name">
+                                            <img src="http://obest.org/html/shopo/s/images/products/small/product2.jpg" alt="Product Image">
+                                        </a>
+                                    </figure>
+
+                                    <div>
+                                        <a href="#" class="btn-delete" title="Delete product" role="button"></a>
+                                        <h4 class="product-title"><a href="product.html">Sunglasses</a></h4>
+                                        <div class="product-price-container">
+                                            <span class="product-price">$110.00</span>
+                                        </div><!-- End .product-price-container -->
+                                        <div class="product-qty">x1</div><!-- End .product-qty -->
+                                    </div><!-- End .product-image-container -->
+                                </div><!-- End .product- -->
+
+                                <div class="product">
+                                    <figure class="product-image-container">
+                                        <a href="product.html" title="Product Name">
+                                            <img src="http://obest.org/html/shopo/assets/images/products/small/product1.jpg" alt="Product Image">
+                                        </a>
+                                    </figure>
+
+                                    <div>
+                                        <a href="#" class="btn-delete" title="Delete product" role="button"></a>
+                                        <h4 class="product-title"><a href="product.html">Leather Belt</a></h4>
+                                        <div class="product-price-container">
+                                            <span class="product-price">$99.00</span>
+                                        </div><!-- End .product-price-container -->
+                                        <div class="product-qty">x1</div><!-- End .product-qty -->
+                                    </div><!-- End .product-image-container -->
+                                </div><!-- End .product- -->
+                            </div><!-- End .droopdowm-menu-wrapper -->
+
+                            <div class="cart-dropdowm-action">
+                                <div class="dropdowm-cart-total"><span>TOTAL:</span> $209.00</div>
+                                <a href="checkout.html" class="btn btn-primary">الدفع</a>
+                            </div><!-- End .cart-dropdown-action -->
+                        </div><!-- End .dropdown-menu -->
+                    </div><!-- End .cart-dropddown -->
+
+
+                </div><!-- End .container-fluid -->
+            </header></div><!-- End .header -->
+
+            <aside class="sidemenu">
+                <div class="sidemenu-wrapper ps-container ps-theme-default" data-ps-id="f952071d-ffa9-9a91-0642-4f9ad9862cea">
+                    <div class="sidemenu-header">
+                        <a href="index.html" class="sidemenu-logo">
+                            <img src="assets/images/logo.png" alt="logo">
+                        </a>
+                    </div><!-- End .sidemenu-header -->
+
+                    <ul class="metismenu">
+                        <li><a href="index.html">Home</a></li>
+                        <li>
+                            <a href="#" aria-expanded="false">Pages <span class="sidemenu-icon"></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="404.html">404 Page</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" aria-expanded="false">Shop <span class="sidemenu-icon"></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="category.html">Category</a></li>
+                                <li><a href="product.html">Product</a></li>
+                                <li><a href="cart.html">Shopping Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="signin.html">Sign In</a></li>
+                                <li><a href="signup.html">Sign Up</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" aria-expanded="false">Portfolio<span class="sidemenu-icon"></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="portfolio-2col.html">Portfolio 2 Col</a></li>
+                                <li><a href="portfolio-3col.html">Portfolio 3 Col</a></li>
+                                <li><a href="portfolio-4col.html">Portfolio 4 Col</a></li>
+                                <li><a href="single-portfolio.html">Portfolio Post</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" aria-expanded="false">Blog<span class="sidemenu-icon"></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="single.html">blog Post</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Buy Shopo!</a></li>
+                    </ul>
+                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div><!-- End .sidemenu-wrapper -->
+            </aside><!-- End .sidemenu -->
+
+            <div class="sidemenu-overlay"></div><!-- End .sidemenu-overlay -->
+
+            <div class="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-md-push-3">
+                            <div class="page-header text-center">
+                                <h1 >تم الانتهاء من عملية الدفع وسيتم التواصل معك قريبا بشأن الطلب الخاص بك </h1>
+                               <br>
+                                <a href="/"><h1 style="color: #4c5cab !important; ">الرجوع للمتجر</h1><a/>
+                            </div><!-- End .page-header -->
+
+                            <div class="checkout-tabs">
+                                <!-- Nav tabs -->
+
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane" id="shipping">
+                                        <div class="tab-header">
+                                            <h4>Check As:</h4>
+                                            <div class="radio-inline-container">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="checkout-option" data-target=".check-as-guest">
+                                                        <span class="check"></span>
+                                                        <span class="circle"></span>
+                                                        Check out as Guest
+                                                    </label>
+                                                </div><!-- End .radio -->
+
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="checkout-option" checked="" data-target=".signup-form">
+                                                        <span class="check"></span>
+                                                        <span class="circle"></span>
+                                                        Register
+                                                    </label>
+                                                </div><!-- End .radio -->
+
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="checkout-option" data-target=".signin-form">
+                                                        <span class="check"></span>
+                                                        <span class="circle"></span>
+                                                        Login
+                                                    </label>
+                                                </div><!-- End .radio -->
+                                            </div><!-- End .radio-inline-container -->
+                                        </div><!-- End .tab-header -->
+
+                                        <div class="check-as-guest target-area">
+                                            <h3>Continue as a guest.</h3>
+                                            <p>Skip this step and move down to below to continue to checkout.</p>
+                                        </div><!-- End .check-as-guest -->
+
+                                        <form action="#" class="signup-form target-area active">
+
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>First Name*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Last Name*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Email*</label>
+                                                        <input type="email" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+                                            </div><!-- End .row -->
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Password*</label>
+                                                        <input type="password" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Phone*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="radio-inline-container">
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="gender">
+                                                                <span class="check"></span>
+                                                                <span class="circle"></span>
+                                                                Male
+                                                            </label>
+                                                        </div><!-- End .radio -->
+
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="gender">
+                                                                <span class="check"></span>
+                                                                <span class="circle"></span>
+                                                                Female
+                                                            </label>
+                                                        </div><!-- End .radio -->
+                                                    </div><!-- End .radio-inline-container -->
+                                                </div><!-- End .col-sm-4 -->
+                                            </div><!-- End .row -->
+
+                                            <div class="clearfix form-action">
+                                                <input type="submit" class="btn btn-primary min-width" value="SIGN Up">
+                                            </div><!-- End .form-action -->
+                                        </form>
+
+                                        <form action="#" class="signin-form target-area">
+                                            <div class="form-group">
+                                                <label>E-mail Address*</label>
+                                                <input type="email" class="form-control" required="">
+                                            </div><!-- End .form-group -->
+
+                                            <div class="form-group">
+                                                <label>Password*</label>
+                                                <input type="password" class="form-control" required="">
+                                            </div><!-- End .form-group -->
+
+                                            <div class="clearfix form-more mb20">
+                                                <div class="checkbox pull-left">
+                                                    <label>
+                                                        <input type="checkbox" name="remember">
+                                                        <span class="checkbox-box"><span class="check"></span></span>
+                                                        Remember Me
+                                                    </label>
+                                                </div><!-- End .checkbox -->
+                                                <a href="#" class="help-link">LOST YOUR PASSWORD?</a>
+                                            </div><!-- End .form-more -->
+
+                                            <div class="clearfix form-action">
+                                                <input type="submit" class="btn btn-primary pull-left min-width" value="SIGN IN">
+                                            </div><!-- End .form-action -->
+                                        </form>
+
+                                        <div class="mb5"></div><!-- margin -->
+
+                                        <h3>BILLING ADDRESS</h3>
+                                        <hr>
+                                        <div class="mb15"></div><!-- margin -->
+                                        <form action="#" class="billing-form">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Full Name*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Address*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Address 2*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+                                            </div><!-- End .row -->
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>City*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>State*</label>
+                                                        <select class="form-control custom-select">
+                                                            <option value="Texas">Texas</option>
+                                                            <option value="New york">Canada</option>
+                                                            <option value="California">California</option>
+                                                        </select>
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Zip code*</label>
+                                                        <input type="text" class="form-control" required="">
+                                                    </div><!-- End .form-group -->
+                                                </div><!-- End .col-sm-4 -->
+                                            </div><!-- End .row -->
+
+                                            <div class="clearfix form-action">
+                                                <div class="checkbox pull-right">
+                                                    <label>
+                                                        <input type="checkbox" name="remember" checked="">
+                                                        <span class="checkbox-box"><span class="check"></span></span>
+                                                        My Shipping and billing address are same
+                                                    </label>
+                                                </div><!-- End .checkbox -->
+
+                                                <input type="submit" class="btn btn-accent min-width pull-left" value="Continue">
+                                            </div><!-- End .form-action -->
+                                        </form>
+                                    </div><!-- End .tab-pane -->
+                                    <div role="tabpanel" class="tab-pane active" id="payment">
+                                        <!-- End .tab-header -->
+
+                                            <div class="row">
+                                                <!-- End .col-sm-6 -->
+
+
+                                        <div class="payment-paypal target-area">
+                                            <h3>Sorry Paypal is not available now.</h3>
+                                            <p>Please Try again later or use your credit card to pay.</p>
+                                        </div><!-- End .check-as-guest -->
+                                    </div><!-- End .tab-pane -->
+                                    <!-- End .tab-pane -->
+                                </div>
+                            </div><!-- End .product-details-tab -->
+
+                        </div><!-- End .col-md-9 -->
+
+                        <!-- End .col-md-3 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .main -->
+
+            <footer class="footer">
+                <div class="container">
+                    <!-- End .info-bar -->
+                </div><!-- End .container -->
+                <div class="footer-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="widget widget-about">
+                                    <h4 class="widget-title">اتصل بنا </h4>
+
+                                    <address>
+                                        <p>ينبع طريق الأمير مقرن مقابل وزارة النقل</p>
+
+                                        <p>+966534311105</p>
+                                         <p>mhadyanbu@gmail.com</p>
+
+
+                                    </address>
+                                </div><!-- End .widget -->
+                            </div><!-- End .col-md-3 -->
+
+
+                            <div class="clearfix visible-sm"></div><!-- clearfix -->
+
+                            <div class="col-sm-6 col-md-3">
+                                <div class="widget">
+                                    <h4 class="widget-title">موقعنا</h4>
+<div class="mapouter"><div class="gmap_canvas"><iframe width="265" height="220" id="gmap_canvas" src="https://maps.google.com/maps?q=%D9%85%D9%87%D8%A7%D8%AF%20%D9%8A%D9%86%D8%A8%D8%B9%20%D9%84%D8%AA%D8%A3%D8%AC%D9%8A%D8%B1%20%D9%84%D9%88%D8%A7%D8%B2%D9%85%20%D8%A7%D9%84%D8%A7%D9%81%D8%B1%D8%A7%D8%AD&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies-to.org</a></div><style>.mapouter{position:relative;text-align:right;height:220px;width:265px;}.gmap_canvas {overflow:hidden;background:none!important;height:220px;width:265px;}</style></div>
+                                </div><!-- End .widget -->
+                            </div><!-- End .col-md-3 -->
+
+                            <div class="col-sm-6 col-md-3">
+                                <div class="widget widget-newsletter">
+                                    <h4 class="widget-title">ابق علي تواصل</h4>
+
+
+
+                                    <div class="social-icons">
+                                        <a href="https://www.snapchat.com/add/mhadynbu" class="social-icon" title="Snapchat"><i style="margin-top: 8px;" class="fa fa-snapchat-ghost " aria-hidden="true"></i></a>
+                                        <a href="https://www.instagram.com/mhadyanbu/" class="social-icon" title="Instagram"><i style="margin-top: 8px;" class="fa fa-instagram " aria-hidden="true"></i></a>
+                                        <a href="https://api.whatsapp.com/send/?phone=+966534311105" class="social-icon" title="Whatsapp"><i style="margin-top: 8px;" class="fa fa-whatsapp" aria-hidden="true"></i></a>
+
+                                    </div>
+                                </div><!-- End .widget -->
+                            </div><!-- End .col-md-3 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .container -->
+                </div><!-- End .footer-inner -->
+
+                <div class="footer-bottom">
+                    <div class="container">
+                        <p class="copyright">   © 2020. جميع الحقوق محفوظه لدى مهاد ينبع</p>
+
+                    </div><!-- End .container -->
+                </div><!-- End .footer-bottom -->
+            </footer><!-- End .footer -->
+        </div><!-- End #wrapper -->
+
+        <a id="scroll-top" style="background-color: #4c5cab !important;  " href="#top" title="Scroll top" class="fixed"><i style="background-color: #4c5cab !important; " class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+        <!-- End -->
+        <script src="{% static 'plugins.js' %}"></script>
+        <script src="{% static 'main.js' %}"></script>
+    <script src="https://kit.fontawesome.com/70eebe618b.js" crossorigin="anonymous"></script>
+
+</body></html>

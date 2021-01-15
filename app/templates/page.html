@@ -1,0 +1,15 @@
+ {% if page.has_next %}
+     <a class="btn btn-primary" href="?page={{page.next_page_number}}">التالي</a>
+
+    {% else %}
+     <a class="btn btn-primary" href="#">التالي</a>
+
+    {% endif %}
+
+    <span class="btn btn-primary">صفحة {{page.number}} من {{page.paginator.num_pages}}</span>
+
+    {% if page.has_previous %}
+    <a class="btn btn-primary" href="?page={{page.previous_page_number}}">السابق</a>
+    {% else %}
+    <a class="btn btn-primary" href="#">السابق</a>
+    {% endif %}
