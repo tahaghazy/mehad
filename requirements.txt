@@ -1,8 +1,11 @@
 admin-totals==1.0.1
 adyengo==0.0.10
+appdirs==1.4.4
 asgiref==3.3.1
+braintree==4.5.0
 certifi==2020.12.5
 chardet==4.0.0
+distlib==0.3.1
 dj-database-url==0.5.0
 Django==3.0.9
 django-3-jet==1.0.7
@@ -12,6 +15,7 @@ django-admin-rangefilter==0.6.3
 django-author==1.0.2
 django-braces==1.13.0
 django-cors-headers==3.5.0
+django-countries==7.0
 django-crispy-forms==1.10.0
 django-csp==3.7
 django-filter==2.4.0
@@ -20,6 +24,7 @@ django-jet==1.0.8
 django-nucleus==0.1.2
 django-object-actions==3.0.1
 django-paypal==1.0.0
+filelock==3.0.12
 gunicorn==20.0.4
 idna==2.10
 ipaddress==1.0.23
@@ -36,4 +41,5 @@ simplejson==3.17.2
 six==1.15.0
 sqlparse==0.4.1
 urllib3==1.26.2
+virtualenv==20.3.1
 whitenoise==5.2.0
