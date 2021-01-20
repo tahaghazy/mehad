@@ -112,10 +112,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9 col-md-push-3">
+
+                            {% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
                             <div class="page-header text-center">
-                                <h1 >تم الانتهاء من عملية الدفع وسيتم التواصل معك قريبا بشأن الطلب الخاص بك </h1>
+                                <h1 >لقد قمت بتسجيل الخروج من المتجر يمكنك اعادة <a href="{% url 'login' %}"><h1 style="color: #4c5cab !important; "> تسجيل الدخول</h1><a/> او يمكنك <a href="{% url 'login' %}"><h1 style="color: #4c5cab !important; ">الرجوع للمتجر</h1><a/></h1>
                                <br>
-                                <a href="/"><h1 style="color: #4c5cab !important; ">الرجوع للمتجر</h1><a/>
+
                             </div><!-- End .page-header -->
 
                             <div class="checkout-tabs">

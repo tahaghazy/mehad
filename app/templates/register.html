@@ -1,3 +1,4 @@
+
 {% load crispy_forms_tags %}
 {% load static %}
 
@@ -15,8 +16,10 @@
         <!-- Google Fonts -->
 
 
-<link rel="stylesheet" href="{% static 'css/plugins.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/plugins.min.css' %}">
             <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="https://scontent-hbe1-1.xx.fbcdn.net/v/t1.15752-0/s206x206/131631201_220950422773637_8461819617291712960_n.png?_nc_cat=103&amp;ccb=2&amp;_nc_sid=58c789&amp;_nc_ohc=Fh_5mHsK2W8AX-1KJ1a&amp;_nc_ht=scontent-hbe1-1.xx&amp;_nc_tp=30&amp;oh=d0dc50ba7ad14098f7c5423e7168ce41&amp;oe=5FFD9C71">
 
@@ -98,104 +101,109 @@
 
 
 
-
                     </ul>
                 <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div><div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 277px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div><div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 277px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div><div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 277px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div><div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 277px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div><!-- End .sidemenu-wrapper -->
             </aside><!-- End .sidemenu -->
 
             <div class="sidemenu-overlay"></div><!-- End .sidemenu-overlay -->
-
             <div class="main">
-                <div class="container">
-<div class="row">
+<div class="container">
+                    <div class="row">
                         <div class="col-md-9 col-md-push-3">
-                        {% if messages %}
-{% for message in messages %}
-    <div class="alert alert-{{message.tags}}">
-    {{message}}
-</div>
-{% endfor %}
-{% endif %}
-                            <div class="row">
+                            <div class="page-header text-center">
+                                <h1>التسجيل</h1>
+                                <p style="font-family: 'Tajawal', sans-serif;">قم بانشاء الحساب الخاص بك  </p>
+                            </div><!-- End .page-header -->
 
-                                <div class="product-gallery-container">
-                                    <div class="product-zoom-wrapper">
-                                        <div class="product-zoom-container">
-                                        <img class="xzoom" id="product-zoom" src="{{ product.image.url }}" data-xoriginal="assets/images/products/single/big/product1.jpg" alt="Zoom image" style="width: 100%;">
-                                        </div><!-- End .product-zoom-container -->
-                                    </div><!-- End .product-zoom-wrapper -->
+                            <form method="POST" class="signup-form">
+                                        {% csrf_token %}
 
-                                    <!-- End .product-gallery-wrapper -->
-                                </div><!-- End .product-gallery-container -->
-
-                                <div class="product-details">
-                                    <h2 class="product-title" style="    font-family: 'Tajawal', sans-serif;">{{ product.title }}</h2>
-
-                                    <div class="product-meta-row">
-                                        <div class="product-price-container">
-                                            <span class="product-price"  style="    font-family: 'Tajawal', sans-serif;color:#4c5cab;">{{ product.price }} ر.س </span>
-                                        </div><!-- Endd .product-price-container -->
-
-                                        <!-- End .product-ratings-wrapper -->
-                                    </div><!-- End .product-meta-row -->
-                                    <div class="product-content">
-                                        <p style="    font-family: 'Tajawal', sans-serif;">{{ product.content }}</p>
-                                          </div><!-- End .product-content -->
-
-                                    <ul class="product-meta-list">
-
-                                    </ul>
+                                <div class="row" style="font-family: 'Tajawal', sans-serif;">
+        {{form|crispy}}
+                                </div><!-- End .row -->
 
 
-
-
-
-
-                                    <div class="product-action">
-                                        <!-- end .product-quantity -->
-
-
-                                    </div><!-- End .product-action -->
-
-                                </div><!-- End .product-details -->
-
-
-
-							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10" style="margin-bottom: 20px;">
-                </div>
-                            {% if product.num_in_stock > 0 %}
-     {% if user.is_authenticated %}
-              							<a href="{{ product.get_add_to_cart_url }}" class="btn btn-primary" style="font-family: 'Tajawal', sans-serif; margin: 2px;">اضف للسله</a>
-                {% else %}
-														<a href="{% url 'login' %}" class="btn btn-primary" style="font-family: 'Tajawal', sans-serif; margin: 2px;">اضف للسله  </a>
-                {% endif %}
-                            {% else %}
-                                <h1 style=" font-family: 'Tajawal', sans-serif;  color: red;">غير متوفر بالمخازن حاليا</h1>
-                            {% endif %}
-                            </div><!-- End .row -->
-
-
-
-                            <div class="owl-data-carousel owl-carousel owl-loaded owl-drag" data-owl-settings="{ &quot;items&quot;:4, &quot;nav&quot;: true, &quot;dots&quot;:false }" data-owl-responsive="{ &quot;480&quot;: {&quot;items&quot;: 2}, &quot;768&quot;: {&quot;items&quot;: 3}, &quot;992&quot;: {&quot;items&quot;: 3}, &quot;1200&quot;: {&quot;items&quot;: 4} }">
-                                <!-- End .product -->
-
-                                <!-- End .product -->
-
-                                <!-- End .product -->
-
-                                <!-- End .product -->
-
-                               <!-- End .product -->
-                            <div class="owl-stage-outer"></div><div class="owl-nav"><div class="owl-prev disabled"></div><div class="owl-next"></div></div><div class="owl-dots disabled"></div></div><!-- End .owl-data-carousel -->
-
-                            <div class="mb50"></div><!-- margin -->
+                                <div class="clearfix form-action">
+                                    <input style="font-family: 'Tajawal', sans-serif;" type="submit" class="btn btn-primary min-width" value="التسجيل">
+                                </div><!-- End .form-action -->
+                            </form>
                         </div><!-- End .col-md-9 -->
 
-                        <!-- End .col-md-3 -->
-                    </div>                </div><!-- End .container -->
-            </div><!-- End .main -->
+                        <aside class="col-md-3 col-md-pull-9 sidebar sidebar-shop">
+                            <!-- End .widget -->
 
+                            <div class="widget widget-box widget-shop-filter">
+                                <h3 class="widget-title">Filter <a href="#" class="btn-category" role="button">Categories<i class="fa fa-caret-down"></i></a></h3>
 
+                                    <div class="filter-box">
+                                        <h5 class="filter-label">Sort By</h5>
+                                        <ul class="shop-filter-list">
+                                            <li><a href="#"><i class="fa fa-caret-right"></i>Default</a></li>
+                                            <li><a href="#"><i class="fa fa-caret-right"></i>Popularity</a></li>
+                                            <li class="active"><a href="#"><i class="fa fa-caret-right"></i>Average Rating</a></li>
+                                            <li><a href="#"><i class="fa fa-caret-right"></i>Newness</a></li>
+                                            <li><a href="#"><i class="fa fa-caret-right"></i>Price: Low to high</a></li>
+                                            <li><a href="#"><i class="fa fa-caret-right"></i>Price: high to Low</a></li>
+                                        </ul>
+                                    </div><!-- End .filter-box -->
+
+                                    <div class="filter-box">
+                                        <h5 class="filter-label">Price <span class="filter-price-text"><span class="filter-price-prefix">$</span><span id="filter-price-range">50.00 - 150.00</span></span></h5>
+                                        <div class="price-slider-wrapper">
+                                            <div id="price-slider" class="noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-origin" style="left: 12.5%;"><div class="noUi-handle noUi-handle-lower" data-handle="0" style="z-index: 5;"></div></div><div class="noUi-connect" style="left: 12.5%; right: 62.5%;"></div><div class="noUi-origin" style="left: 37.5%;"><div class="noUi-handle noUi-handle-upper" data-handle="1" style="z-index: 6;"></div></div></div></div><!-- End #price-slider -->
+                                        </div><!-- End .price-slider-wrapper -->
+                                    </div><!-- End .filter-box -->
+
+                                    <div class="filter-box">
+                                        <h5 class="filter-label">Color</h5>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <ul class="filter-color-list">
+                                                    <li>
+                                                        <span class="filter-color" style="background-color: #1e73be;"></span>
+                                                        <span class="filter-color-text">Blue</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="filter-color" style="background-color: #c0c0c0;"></span>
+                                                        <span class="filter-color-text">Gray</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="filter-color" style="background-color: #dc9814;"></span>
+                                                        <span class="filter-color-text">Orange</span>
+                                                    </li>
+                                                </ul>
+                                            </div><!-- End col-xs-6 -->
+
+                                            <div class="col-xs-6">
+                                                <ul class="filter-color-list">
+                                                    <li>
+                                                        <span class="filter-color" style="background-color: #736751;"></span>
+                                                        <span class="filter-color-text">Brown</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="filter-color" style="background-color: #05ac92;"></span>
+                                                        <span class="filter-color-text">Green</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="filter-color" style="background-color: #fff;"></span>
+                                                        <span class="filter-color-text">White</span>
+                                                    </li>
+                                                </ul>
+                                            </div><!-- End col-xs-6 -->
+                                        </div><!-- End row -->
+                                    </div><!-- End .filter-box -->
+
+                                    <a href="#" class="btn btn-apply btn-block">Apply Filter</a>
+                            </div><!-- End .widget -->
+
+                            <!-- End .widget -->
+
+                            <!-- End .widget -->
+
+                            <!-- End .widget -->
+                        </aside><!-- End .col-md-3 -->
+                    </div><!-- End .row -->
+                </div>
             <footer class="footer">
                 <div class="container">
                     <!-- End .info-bar -->
@@ -224,7 +232,7 @@
                             <div class="col-sm-6 col-md-3">
                                 <div class="widget">
                                     <h4 class="widget-title">موقعنا</h4>
-<div class="mapouter"><div class="gmap_canvas"><iframe width="200" height="220" id="gmap_canvas" src="https://maps.google.com/maps?q=%D9%85%D9%87%D8%A7%D8%AF%20%D9%8A%D9%86%D8%A8%D8%B9%20%D9%84%D8%AA%D8%A3%D8%AC%D9%8A%D8%B1%20%D9%84%D9%88%D8%A7%D8%B2%D9%85%20%D8%A7%D9%84%D8%A7%D9%81%D8%B1%D8%A7%D8%AD&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies-to.org</a></div><style>.mapouter{position:relative;text-align:right;height:220px;width:265px;}.gmap_canvas {overflow:hidden;background:none!important;height:220px;width:265px;}</style></div>
+<div class="mapouter"><div class="gmap_canvas"><iframe width="265" height="220" id="gmap_canvas" src="https://maps.google.com/maps?q=%D9%85%D9%87%D8%A7%D8%AF%20%D9%8A%D9%86%D8%A8%D8%B9%20%D9%84%D8%AA%D8%A3%D8%AC%D9%8A%D8%B1%20%D9%84%D9%88%D8%A7%D8%B2%D9%85%20%D8%A7%D9%84%D8%A7%D9%81%D8%B1%D8%A7%D8%AD&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies-to.org</a></div><style>.mapouter{position:relative;text-align:right;height:220px;width:265px;}.gmap_canvas {overflow:hidden;background:none!important;height:220px;width:265px;}</style></div>
                                 </div><!-- End .widget -->
                             </div><!-- End .col-md-3 -->
 
@@ -255,15 +263,11 @@
             </footer><!-- End .footer -->
         </div><!-- End #wrapper -->
 
-        <a id="scroll-top" style="background-color: #4c5cab !important; " href="#top" title="Scroll top" class="fixed"><i style="background-color: #4c5cab !important; " class="fa fa-angle-up" aria-hidden="true"></i></a>
+        <a id="scroll-top" style="background-color: #4c5cab !important;  " href="#top" title="Scroll top" class="fixed"><i style="background-color: #4c5cab !important; " class="fa fa-angle-up" aria-hidden="true"></i></a>
 
         <!-- End -->
-          <script src="{% static 'plugins.js' %}"></script>
+        <script src="{% static 'plugins.js' %}"></script>
         <script src="{% static 'main.js' %}"></script>
     <script src="https://kit.fontawesome.com/70eebe618b.js" crossorigin="anonymous"></script>
 
 </body></html>
-
-
-
-

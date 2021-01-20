@@ -67,16 +67,18 @@ class OrderAdmin(admin.ModelAdmin):
 
 class OrderTowAdmin(admin.ModelAdmin):
     list_display = [
-        'full_name',
+        'user',
         'product',
-        'time',
-
         'price',
-
         'date',
         'id',
 
     ]
+    def get_model_perms(self, request):
+        """
+        Return empty perms dict thus hiding the model from admin index.
+        """
+        return {}
     search_fields = ['full_name','product__title']
     list_filter = [OrderTowAutocomplete]
     autocomplete_fields = ['product']
@@ -84,12 +86,42 @@ class OrderTowAdmin(admin.ModelAdmin):
     pass
 
 
+class OrderrTowAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['items']
 
+    list_display = [
+        'user',
+        'price',
+        'ordered','id'
+
+    ]
+class TransactionAdmin(admin.ModelAdmin):
+
+
+    def has_change_permission(self, request, obj=Transaction):
+
+        return False
+
+    def has_delete_permission(self, request, obj=Transaction):
+        return False
+
+    def has_add_permission(self, request, obj=Transaction):
+        return False
+    list_display = [
+        'profile',
+        'amount',
+        'order_id',
+
+    ]
 #----------------------
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Rental, RentalAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderTow, OrderTowAdmin)
+admin.site.register(Orderr,OrderrTowAdmin)
+admin.site.register(Transaction,TransactionAdmin)
+
+
 admin.site.unregister(Group)
 
 

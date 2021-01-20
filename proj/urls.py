@@ -18,6 +18,8 @@ from django.urls import path ,include
 from app.views import *
 from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls import url
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
@@ -26,7 +28,17 @@ urlpatterns = [
     path('searchposts/', searchposts, name='searchposts'),
     path('process-payment/', process_payment, name='process_payment'),
     path('payment-done/', payment_canceled, name='payment_cancelled'),
-
-
+    path('register/', register, name='register'),
+    path('accounts/login/', login_user, name='login'),
+    path('logout/', logout_user, name='logout'),
+    path('remove-from-cart/<slug>/', remove_from_cart, name='remove-from-cart'),
+    path('cart/', OrderSummaryView.as_view(), name='order-summary'),
+    path('remove-item-from-cart/<slug>/', remove_single_item_from_cart,name='remove-single-item-from-cart'),
+    path('remove-time-from-cart/<slug>/', remove_single_time_from_cart, name='remove-single-time-from-cart'),
+    path('time-from-cart/<slug>/', single_time_from_cart,name='single-time-from-cart'),
+    path('add-to-cart/<slug>/', add_to_cart, name='add-to-cart'),
+    path('checkout/', CheckoutView.as_view(), name='checkout'),
+    path('checkot/', checkout, name='checkot'),
+    url(r'^update-transaction/(?P<token>[-\w]+)/$', update_transaction_records,name='update_records')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

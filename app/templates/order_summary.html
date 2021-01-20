@@ -1,4 +1,5 @@
-{% load crispy_forms_tags %}
+
+
 {% load static %}
 
 <html dir="" style="          font-family: 'Tajawal', sans-serif;
@@ -15,8 +16,10 @@
         <!-- Google Fonts -->
 
 
-<link rel="stylesheet" href="{% static 'css/plugins.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/plugins.min.css' %}">
             <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="https://scontent-hbe1-1.xx.fbcdn.net/v/t1.15752-0/s206x206/131631201_220950422773637_8461819617291712960_n.png?_nc_cat=103&amp;ccb=2&amp;_nc_sid=58c789&amp;_nc_ohc=Fh_5mHsK2W8AX-1KJ1a&amp;_nc_ht=scontent-hbe1-1.xx&amp;_nc_tp=30&amp;oh=d0dc50ba7ad14098f7c5423e7168ce41&amp;oe=5FFD9C71">
 
@@ -106,96 +109,108 @@
             <div class="sidemenu-overlay"></div><!-- End .sidemenu-overlay -->
 
             <div class="main">
-                <div class="container">
-<div class="row">
+<div class="container">
+                    <div class="row">
                         <div class="col-md-9 col-md-push-3">
-                        {% if messages %}
+                                                {% if messages %}
 {% for message in messages %}
     <div class="alert alert-{{message.tags}}">
     {{message}}
 </div>
 {% endfor %}
 {% endif %}
-                            <div class="row">
+                            <div class="page-header text-center">
+                                <h1> سلة المشتريات</h1>
+                                <p>العناصر التي تود استئجارها </p>
+                            </div><!-- End .page-header -->
 
-                                <div class="product-gallery-container">
-                                    <div class="product-zoom-wrapper">
-                                        <div class="product-zoom-container">
-                                        <img class="xzoom" id="product-zoom" src="{{ product.image.url }}" data-xoriginal="assets/images/products/single/big/product1.jpg" alt="Zoom image" style="width: 100%;">
-                                        </div><!-- End .product-zoom-container -->
-                                    </div><!-- End .product-zoom-wrapper -->
+                            <div class="table-responsive" style="direction: ltr;">
+                            {% if object.items.all %}
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>المنتج</th>
+                                            <th>سعر المنتج</th>
+                                            <th>الكميه المستأجره</th>
+                                            <th> المده بالايام</th>
+                                            <th>السعر الكلي</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+          {% for order_item in object.items.all %}
 
-                                    <!-- End .product-gallery-wrapper -->
-                                </div><!-- End .product-gallery-container -->
-
-                                <div class="product-details">
-                                    <h2 class="product-title" style="    font-family: 'Tajawal', sans-serif;">{{ product.title }}</h2>
-
-                                    <div class="product-meta-row">
-                                        <div class="product-price-container">
-                                            <span class="product-price"  style="    font-family: 'Tajawal', sans-serif;color:#4c5cab;">{{ product.price }} ر.س </span>
-                                        </div><!-- Endd .product-price-container -->
-
-                                        <!-- End .product-ratings-wrapper -->
-                                    </div><!-- End .product-meta-row -->
-                                    <div class="product-content">
-                                        <p style="    font-family: 'Tajawal', sans-serif;">{{ product.content }}</p>
-                                          </div><!-- End .product-content -->
-
-                                    <ul class="product-meta-list">
-
-                                    </ul>
-
-
-
-
-
-
-                                    <div class="product-action">
-                                        <!-- end .product-quantity -->
-
-
-                                    </div><!-- End .product-action -->
-
-                                </div><!-- End .product-details -->
+                                        <tr>
+                                            <td class="product-col">
+                                                <div class="product">
+                                                    <figure class="product-image-container">
+                                                        <a href="/detail/{{ order_item.product.slug }}">
+                                                            <img style="width: 105px; height: 115px;"  src="{{ order_item.product.image.url }}" alt="Product">
+                                                        </a>
+                                                    </figure>
+                                                    <h3 class="product-title">
+                                                        <a href="/detail/{{ order_item.product.slug }}">{{ order_item.product.title }}</a>
+                                                    </h3>
+                                                </div><!-- End .product -->
+                                            </td>
+                                            <td class="price-col"> ر.س {{ order_item.product.price}}</td>
+                                            <div class="input-group bootstrap-touchspin">
+                                                                                            <td class="quantity-col">
+                                                <a href="{% url 'remove-single-item-from-cart' order_item.product.slug %}"><i class="fas fa-minus mr-3"></i></a>
+            	{{ order_item.quantity }}
+            	<a href="{% url 'add-to-cart' order_item.product.slug %}"><i class="fas fa-plus ml-3"></i></a>
 
 
+                                            </div>
+                                            <div class="input-group bootstrap-touchspin">
+                                                                                            <td class="quantity-col">
+                                                <a href="{% url 'remove-single-time-from-cart' order_item.product.slug %}"><i class="fas fa-minus mr-3"></i></a>
+            	{{ order_item.time }}
+            	<a href="{% url 'single-time-from-cart' order_item.product.slug %}"><i class="fas fa-plus ml-3"></i></a>
 
-							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10" style="margin-bottom: 20px;">
-                </div>
-                            {% if product.num_in_stock > 0 %}
-     {% if user.is_authenticated %}
-              							<a href="{{ product.get_add_to_cart_url }}" class="btn btn-primary" style="font-family: 'Tajawal', sans-serif; margin: 2px;">اضف للسله</a>
-                {% else %}
-														<a href="{% url 'login' %}" class="btn btn-primary" style="font-family: 'Tajawal', sans-serif; margin: 2px;">اضف للسله  </a>
-                {% endif %}
-                            {% else %}
-                                <h1 style=" font-family: 'Tajawal', sans-serif;  color: red;">غير متوفر بالمخازن حاليا</h1>
+
+                                            </div>
+
+                                            <td class="total-col">{{ order_item.get_total_item_price}}</td>
+                                            <td class="delete-col"><a href="{% url 'remove-from-cart' order_item.product.slug %}" class="btn-delete" title="Delete product" role="button"></a></td>
+                                        </tr>
+
+        {% endfor %}
+
+
+
+
+                                    </tbody>
+                                </table>
+                                {% else %}
+<div class="page-header text-center">
+                                <h1>سلتك فارغه </h1>
+                                <a href="/"><h1 style="color: #4c5cab !important; ">الرجوع للمتجر</h1><a/>
+
+                            </div><!-- End .page-header -->
                             {% endif %}
+                            </div><!-- End .table-responsive -->
+
+                            <div class="row">
+                                <div class="col-sm-7">
+                                </div><!-- End .col-sm-7 -->
+                            {% if object.items.all %}
+
+                                <div class="col-sm-4 col-sm-offset-1">
+                                    <div class="cart-proceed">
+
+                                        <p class="cart-total"><span>المبلغ الكلي :</span> <span class="text-accent">{{ object.get_total }}</span></p>
+                                        <a href="/checkout" style="background-color: #4c5cab !important;  " class="btn btn-accent">Proceed to Checkout</a>
+                                    </div><!-- Endd .cart-proceed -->
+                                </div><!-- End .col-sm-4 -->
+                                                            {% endif %}
+
                             </div><!-- End .row -->
-
-
-
-                            <div class="owl-data-carousel owl-carousel owl-loaded owl-drag" data-owl-settings="{ &quot;items&quot;:4, &quot;nav&quot;: true, &quot;dots&quot;:false }" data-owl-responsive="{ &quot;480&quot;: {&quot;items&quot;: 2}, &quot;768&quot;: {&quot;items&quot;: 3}, &quot;992&quot;: {&quot;items&quot;: 3}, &quot;1200&quot;: {&quot;items&quot;: 4} }">
-                                <!-- End .product -->
-
-                                <!-- End .product -->
-
-                                <!-- End .product -->
-
-                                <!-- End .product -->
-
-                               <!-- End .product -->
-                            <div class="owl-stage-outer"></div><div class="owl-nav"><div class="owl-prev disabled"></div><div class="owl-next"></div></div><div class="owl-dots disabled"></div></div><!-- End .owl-data-carousel -->
-
-                            <div class="mb50"></div><!-- margin -->
                         </div><!-- End .col-md-9 -->
 
                         <!-- End .col-md-3 -->
-                    </div>                </div><!-- End .container -->
-            </div><!-- End .main -->
-
-
+                    </div><!-- End .row -->
+                </div>
             <footer class="footer">
                 <div class="container">
                     <!-- End .info-bar -->
@@ -255,15 +270,11 @@
             </footer><!-- End .footer -->
         </div><!-- End #wrapper -->
 
-        <a id="scroll-top" style="background-color: #4c5cab !important; " href="#top" title="Scroll top" class="fixed"><i style="background-color: #4c5cab !important; " class="fa fa-angle-up" aria-hidden="true"></i></a>
+        <a id="scroll-top" style="background-color: #4c5cab !important;  " href="#top" title="Scroll top" class="fixed"><i style="background-color: #4c5cab !important; " class="fa fa-angle-up" aria-hidden="true"></i></a>
 
         <!-- End -->
-          <script src="{% static 'plugins.js' %}"></script>
+        <script src="{% static 'plugins.js' %}"></script>
         <script src="{% static 'main.js' %}"></script>
     <script src="https://kit.fontawesome.com/70eebe618b.js" crossorigin="anonymous"></script>
 
 </body></html>
-
-
-
-
