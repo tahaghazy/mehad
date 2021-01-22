@@ -43,9 +43,13 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',
     'admin_auto_filters',
     'crispy_forms',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
 
 ]
+SITE_ID = 1
+
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',

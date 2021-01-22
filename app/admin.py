@@ -87,14 +87,17 @@ class OrderTowAdmin(admin.ModelAdmin):
 
 
 class OrderrTowAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['items']
+    autocomplete_fields = ['items','user']
+    list_filter=['ordered','label']
 
     list_display = [
         'user',
         'price',
-        'ordered','id'
+        'id',
+        'ordered'
 
     ]
+
 class TransactionAdmin(admin.ModelAdmin):
 
 
@@ -113,9 +116,10 @@ class TransactionAdmin(admin.ModelAdmin):
         'order_id',
 
     ]
+    search_fields = ['id']
+
 #----------------------
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Rental, RentalAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderTow, OrderTowAdmin)
 admin.site.register(Orderr,OrderrTowAdmin)

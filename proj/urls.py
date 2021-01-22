@@ -19,6 +19,12 @@ from app.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
+from app.sitemaps import StaticViewSitemap ,PostSitemap
+from django.contrib.sitemaps.views import sitemap
+sitemaps = {
+    'static': StaticViewSitemap,
+    'post': PostSitemap
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,6 +45,7 @@ urlpatterns = [
     path('add-to-cart/<slug>/', add_to_cart, name='add-to-cart'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('checkot/', checkout, name='checkot'),
-    url(r'^update-transaction/(?P<token>[-\w]+)/$', update_transaction_records,name='update_records')
+    url(r'^update-transaction/(?P<token>[-\w]+)/$', update_transaction_records,name='update_records'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name="sitemap"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
