@@ -43,7 +43,7 @@ def home(request):
     except EmptyPage:
         products = paginator.page(paginator.num_page)
     context = {
-        'title': 'الصفحة الرئيسية',
+        'title': 'MehadYanbu | مهاد ينبع',
         'products': products,
         'page': page,
 
@@ -52,14 +52,6 @@ def home(request):
 
 def detail(request,slug):
     product = get_object_or_404(Product,slug=slug)
-
-
-
-    # What you want the button to do.
-
-
-    # Create the instance.
-
     return render(request, 'detail.html', context={'title':product.title,'product':product})
 
 
@@ -254,9 +246,9 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 def pdf(request,pk):
     pdf = get_object_or_404(Rental,id = pk)
-    aa = pdf.product.all()
-
-
+    aa = pdf.product.items.all()
+    for i in OrderTow.objects.all():
+        i.save()
     return render(request,'pdf.html',context={'i':pdf,'aa':aa})
 
 
@@ -400,6 +392,7 @@ class CheckoutView(View):
 def checkout(request, **kwargs):
     client_token = generate_client_token()
     existing_order = get_object_or_404(Orderr, user=request.user,ordered = False)
+
     total = existing_order.get_total()
     if request.method == 'POST':
 
@@ -434,8 +427,16 @@ def checkout(request, **kwargs):
 def update_transaction_records(request,token):
     # get the order being processed
     order_to_purchase = get_object_or_404(Orderr,user=request.user,ordered=False)
+    order_to_purchas = order_to_purchase.items.all()
 
     # update the placed order
+    for a in order_to_purchas:
+        a.ordered = True
+        a.product.num_in_stock -= a.quantity
+        a.product.num_out_stock += a.quantity
+        a.product.save()
+        a.save()
+
     order_to_purchase.ordered = True
     order_to_purchase.label = 'B'
     order_to_purchase.save()

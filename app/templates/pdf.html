@@ -6,6 +6,18 @@
   <meta charset="UTF-8">
   <title>فاتوره</title>
 <style>
+    @font-face {
+    font-family: 'Tajawal';
+    src: url('http://p0wer.herokuapp.com/static/Power/fonts/Tajawal-Regular.ttf')  format("truetype"),
+         local('Tajawal');
+  }
+  html, body ,p {
+  direction:rtl;
+ text-align:right;
+          font-family: 'Tajawal', sans-serif;
+
+
+  }
 .print {
 	display:none
 }
@@ -22,29 +34,51 @@
 <div class="container">
     <div class="row">
         <div class="col text-center mt-2">
-                <a href = "/"><img dir="rtl" src="https://i.suar.me/BZpeN/l"  class="align-center " alt="" loading="lazy"></a>
-        </div>
+<a href="/"><img dir="rtl" src="https://i.suar.me/BZpeN/l" class="align-center " alt="" loading="lazy" style="
+    width: 200px;
+"></a>        </div>
     </div>
 </div>
 
      <div class="container mt-5">
-<table class="table table-striped ">
-  <thead>
-    <tr>
-      <th scope="col"> المنتجات</th>
-      <th scope="col">{% for a in aa %} -( عدد {{ a.quantity }} {{ a.product.title }})
-
-      {% endfor %}
-      </th>
-    </tr>
-  </thead>
-
+     <div class="bd-example">
+  <table class="table">
     <thead>
+          <h4 class="text-center mb-3" scope="col">المنتجات</h4>
+
+      <tr>
+        <th scope="col">المنتج</th>
+        <th scope="col">الكميه</th>
+        <th scope="col">المده</th>
+        <th scope="col">السعر</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for a in aa %}
+      <tr class="">
+        <th scope="row">{{ a.product.title }}</th>
+        <td>{{ a.quantity }}</td>
+        <td>{{ a.time }}</td>
+        <td>{{ a.price }}</td>
+
+      </tr>
+      {% endfor %}
+
+
+    </tbody>
+<tbody>
+
     <tr>
-      <th scope="col"> مدة التاجير</th>
-      <th scope="col"> {{ i.time }} يوم </th>
+      <th scope="row">المجموع</th>
+      <td colspan="3">{{ i.price }} ر.س </td>
     </tr>
-  </thead>
+  </tbody>
+  </table>
+</div>
+<table class="table table-striped ">
+
+
 
     <thead>
     <tr>
@@ -78,31 +112,31 @@
     <thead>
     <tr>
       <th scope="col"> الاسم</th>
-      <th scope="col"> {{ i.full_name }} </th>
+      <th scope="col"> {{ i.product.full_name }} </th>
     </tr>
   </thead>
     <thead>
     <tr>
       <th scope="col"> البريد الالكتروني</th>
-      <th scope="col"> {{ i.email }}</th>
+      <th scope="col"> {{ i.product.email }}</th>
     </tr>
   </thead>
     <thead>
     <tr>
       <th scope="col"> الهاتف المحمول</th>
-      <th scope="col"> {{ i.phone }} </th>
+      <th scope="col"> {{ i.product.phone }} </th>
     </tr>
   </thead>
     <thead>
     <tr>
       <th scope="col">  عنوان التوصيل</th>
-      <th scope="col"> {{ i.address   }} </th>
+      <th scope="col"> {{ i.product.address   }} </th>
     </tr>
   </thead>
     <thead>
     <tr>
       <th scope="col">ملاحظات</th>
-      <th scope="col"> {{ i.content  }} </th>
+      <th scope="col"> {{ i.product.content  }} </th>
     </tr>
   </thead>
 

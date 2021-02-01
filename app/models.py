@@ -77,6 +77,8 @@ class Product(models.Model):
                 self.slug = arabic_slugify(self.title)
         if self.num_in_stock > 0:
             self.active = True
+        else:
+            self.active = False
 
 
         super(Product, self).save(*args, **kwargs)
@@ -91,6 +93,7 @@ from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 class Order(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE,unique=False,related_name='orders', verbose_name='المنتج')
     quantity = models.IntegerField(default=1,verbose_name='الكميه')
+    time = models.IntegerField(default=1,verbose_name='المده بالأيام')
     date = models.DateTimeField(auto_now=True,editable=False)
 
     def __str__(self):
@@ -104,53 +107,12 @@ class Order(models.Model):
 
 
 
-    def save(self, *args, **kwargs):
 
-        for b in Product.objects.filter(title = self.product.title):
-            b.num_out_stock += self.quantity
-            b.num_in_stock = b.num_in_stock - self.quantity
-            b.save()
-
-
-
-
-
-        super(Order, self).save(*args, **kwargs)
     class Meta:
         ordering = ('-date',)
         verbose_name_plural = ('المنتجات المستأجره')
         verbose_name = (' منتج مستاجر ')
 
-
-
-class Rental(models.Model):
-    product = models.ManyToManyField(Order,verbose_name='المنتج الذي سيتم تاجيره')
-    time = models.IntegerField(verbose_name='مدة التاجير بالايام')
-    from2 = models.DateField(default=timezone.now,verbose_name='تاريخ بداية التاجير')
-    to = models.DateField(default=timezone.now,verbose_name='تاريخ نهاية التاجير')
-    price = models.FloatField(default=0,verbose_name= 'اجمالي المبلغ المستحق')
-    full_name = models.CharField(max_length=1000,verbose_name='اسم المستأجر ')
-    email = models.EmailField(null=True,blank=True,verbose_name='البريد الالكتروني للمستأجر')
-    phone = models.CharField(max_length=20,verbose_name='رقم هاتف المستاجر')
-    address = models.TextField(verbose_name='عنوان التوصيل للمستاجر')
-    content = models.TextField(null=True,blank=True, verbose_name=  'ملاحظات')
-    active = models.BooleanField(default=True, verbose_name='عمليه جاريه')
-    date = models.DateTimeField(auto_now=True,editable=False)
-
-
-    def __str__(self):
-        a = str(self.full_name)
-        return a
-
-    def get_absolute_url(self):
-        return f'/pdf/{self.id}'
-
-    def save(self, *args, **kwargs):
-        super(Rental, self).save(*args, **kwargs)
-    class Meta:
-        ordering = ('-date',)
-        verbose_name_plural = ('عمليات التأجير')
-        verbose_name = ('عملية تأجير')
 
 
 class OrderTow(models.Model):
@@ -165,7 +127,7 @@ class OrderTow(models.Model):
 
     def save(self, *args, **kwargs):
         for x in Product.objects.filter(id = self.product.id):
-            self.price = x.price * self.quantity
+            self.price = x.price * self.quantity * self.time
 
         super(OrderTow, self).save(*args, **kwargs)
     class Meta:
@@ -195,14 +157,14 @@ class Orderr(models.Model):
     start_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField(verbose_name='تاريخ تأكيد الطلب')
     full_name = models.CharField(max_length=1000, verbose_name='اسم المستأجر ')
-    email = models.EmailField(null=True, blank=True, verbose_name='البريد الالكتروني ')
+    email = models.EmailField(null=True, verbose_name='البريد الالكتروني ')
     phone = models.CharField(max_length=20, verbose_name='رقم الهاتف ')
     address = models.TextField(verbose_name='عنوان التوصيل ')
     content = models.TextField(null=True, blank=True, verbose_name='ملاحظات')
-    label = models.CharField(choices=LABEL_CHOICES,default='A', max_length=1)
+    label = models.CharField(choices=LABEL_CHOICES,default='A', max_length=1,verbose_name='الحاله')
     ordered = models.BooleanField(default=False,editable=False,verbose_name='تم الدفع')
     id = models.AutoField(primary_key=True ,verbose_name = 'رقم الطلب' ,editable=False)
-    price = models.IntegerField(default=0,editable=False,verbose_name='المبلغ المستحق')
+    price = models.IntegerField(default=0,verbose_name='المبلغ المستحق')
 
 
     '''
@@ -216,7 +178,7 @@ class Orderr(models.Model):
     '''
 
     def __str__(self):
-        return self.user.username
+        return  str(' طلب رقم ')+str(self.id)
 
     def get_total(self):
         total = 0
@@ -250,3 +212,27 @@ class Transaction(models.Model):
         ordering = ('-timestamp',)
         verbose_name_plural = ('التحويلات الماليه')
         verbose_name = ('تحويل مالي')
+
+class Rental(models.Model):
+    product = models.ForeignKey(Orderr,on_delete=models.CASCADE,null=True,verbose_name='الطلب')
+    from2 = models.DateField(default=timezone.now,verbose_name='تاريخ بداية التاجير')
+    to = models.DateField(default=timezone.now,verbose_name='تاريخ نهاية التاجير')
+    price = models.FloatField(editable=False,default=0,verbose_name= 'اجمالي المبلغ المستحق')
+    active = models.BooleanField(default=True, verbose_name='عمليه جاريه')
+    date = models.DateTimeField(auto_now=True,editable=False)
+
+
+    def __str__(self):
+        a = str(self.product.id)
+        return a
+
+    def get_absolute_url(self):
+        return f'/pdf/{self.id}'
+
+    def save(self, *args, **kwargs):
+        self.price = self.product.price
+        super(Rental, self).save(*args, **kwargs)
+    class Meta:
+        ordering = ('-date',)
+        verbose_name_plural = (' فواتير عمليات التأجير')
+        verbose_name = (' فاتورة عملية تأجير')
